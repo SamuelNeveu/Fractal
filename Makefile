@@ -38,19 +38,19 @@ CC		= gcc -Ofast
 CFLAGS	= -Wall -Wextra -Werror
 
 # pthread lib
-	PTH_LIB = -lpthread -D_REENTRANT 
+PTH_LIB = -lpthread -D_REENTRANT 
 
 # mlx library
 MLX		= ./minilibx/
 MLX_LIB	= $(addprefix $(MLX),mlx.a)
 MLX_INC	= -I ./minilibx
-MLX_LNK	= -L ./minilibx -l mlx -lXext -lX11 -L/usr/X11/lib # -framework OpenGL -framework AppKit
+MLX_LNK	= -L ./minilibx -framework OpenGL -framework AppKit -l mlx #-lXext -lX11 -L/usr/X11/lib # 
 
 # ft library
 FT		= ./libft/
 FT_LIB	= $(addprefix $(FT),libft.a)
 FT_INC	= -I ./libft/includes
-FT_LNK	= -L ./libft -l ft ##-lpthread
+FT_LNK	= -L ./libft -l ft -lpthread
 
 # directories
 SRCDIR	= ./srcs/

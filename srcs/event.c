@@ -12,36 +12,78 @@
 
 #include "fractol.h"
 
+# define H 4 //104
+# define ESC 53 //65307
+# define TAB 48 //65289
+# define J 38 //106
+# define P1 18 //65470
+# define P2 19 //65471
+# define P3 20 //65472
+# define P4 21 //65473
+# define P5 23 //65474
+# define P6 22 //65475
+# define P7 26 //65476
+# define P8 28 //
+# define P9 25 //
+# define P0 29 //
+# define C 8 //17
+# define N0 82 //38
+# define N1 83 //233
+# define N2 84 //34
+# define N3 85 //39
+# define N4 86 //40
+# define N5 87 //45
+# define N6 88 //232
+# define N7 89 //95
+# define N8 91 //231
+# define N9 92 //119
+# define M 41 //119
+# define R 15 //114
+# define S 1 //115
+# define PLUS 44
+# define MOINS 24
+# define SPACE 49//32
+# define G 5//103
+# define B 11//98
+# define ARROW_LEFT 123 //65363
+# define ARROW_DOWN 125//65361
+# define ARROW_RIGHT 124//65364
+# define ARROW_UP 126//65362
+# define UP 115 //112
+# define DOWN 119 //109
+
+
+
 int deal_key(int key, t_env *e)
 {
     printf("%d\n", key);
-    key == 104 ? help_event(e) : 0;
-    key == 65307 ? ft_exit(e) : 0;
-    key == 65289 ? switch_pal(e) : 0;
-    key == 106 ? change_julia_set(e) : 0;
+    key == H ? help_event(e) : 0;
+    key == ESC ? ft_exit(e) : 0;
+    key == TAB ? switch_pal(e) : 0;
+    key == J ? change_julia_set(e) : 0;
 
-    key ==  65470 ? event_color(0, e) : 0;
-    key == 65471 ? event_color(1, e) : 0;
-    key == 65472 ? event_color(2, e) : 0;
-    key == 65473 ? event_color(3, e) : 0;
-    key == 65474 ? event_color(4, e) : 0;
-    key == 65475 ? event_color(5, e) : 0;
-    key == 65476 ? event_color(6, e) : 0;
-    if (key == 17)
+    key == P1 ? event_color(0, e) : 0;
+    key == P2 ? event_color(1, e) : 0;
+    key == P3 ? event_color(2, e) : 0;
+    key == P4 ? event_color(3, e) : 0;
+    key == P5 ? event_color(4, e) : 0;
+    key == P6 ? event_color(5, e) : 0;
+    key == P7 ? event_color(6, e) : 0;
+    if (key == C)
         e->switc == 0 ? e->switc = 1 : (e->switc = 0);
-    key == 38 ? switch_fractal(e, 0) : 0;
-    key == 233 ? switch_fractal(e, 1) : 0;
-    key == 34 ? switch_fractal(e, 2) : 0;
-    key == 39 ? switch_fractal(e, 3) : 0;
-    key == 40 ? switch_fractal(e, 4) : 0;
-    key == 45 ? switch_fractal(e, 5) : 0;
-    key == 232 ? switch_fractal(e, 6) : 0;
-    key == 95 ? switch_fractal(e, 7) : 0;
-    key == 231 ? switch_fractal(e, 8) : 0;
-    key == 224 ? switch_fractal(e, 9) : 0;
-    key == 119 ? allow_motion_julia(e) : 0;
-    key == 32 ? reset_default(e) : 0;
-    if (key == 115)
+    key == N0 ? switch_fractal(e, 0) : 0;
+    key == N1 ? switch_fractal(e, 1) : 0;
+    key == N2 ? switch_fractal(e, 2) : 0;
+    key == N3 ? switch_fractal(e, 3) : 0;
+    key == N4 ? switch_fractal(e, 4) : 0;
+    key == N5 ? switch_fractal(e, 5) : 0;
+    key == N6 ? switch_fractal(e, 6) : 0;
+    key == N7 ? switch_fractal(e, 7) : 0;
+    key == N8 ? switch_fractal(e, 8) : 0;
+    key == N9 ? switch_fractal(e, 9) : 0;
+    key == M ? allow_motion_julia(e) : 0;
+    key == SPACE ? reset_default(e) : 0;
+    if (key == S)
     {
         e->smooth == 0 ? e->smooth += 1 : (e->smooth = 0);
         do_fractol(e);
@@ -50,17 +92,17 @@ int deal_key(int key, t_env *e)
 }
 
 int press_event(int key, t_env *e) {
-    key == 65365 || key == 65366 ? cycle_usr(key, e) : 0;
-    key == 114 ? rgb_usr(e, 'r') : 0;
-    key == 103 ? rgb_usr(e, 'g') : 0;
-    key == 98 ? rgb_usr(e, 'b') : 0;
-    key == 65363 ? move(e, 'x', 0.05) : 0;
-    key == 65361 ? move(e, 'x', -0.05) : 0;
-    key == 65364 ? move(e, 'y', 0.05) : 0;
-    key == 65362 ? move(e, 'y', -0.05) : 0;
-    if (key == 112 || key == 109)
+    key == MOINS || key == PLUS ? cycle_usr(key, e) : 0;
+    key == R ? rgb_usr(e, 'r') : 0;
+    key == G ? rgb_usr(e, 'g') : 0;
+    key == B ? rgb_usr(e, 'b') : 0;
+    key == ARROW_LEFT ? move(e, 'x', 0.05) : 0;
+    key == ARROW_RIGHT ? move(e, 'x', -0.05) : 0;
+    key == ARROW_DOWN ? move(e, 'y', 0.05) : 0;
+    key == ARROW_UP ? move(e, 'y', -0.05) : 0;
+    if (key == UP || key == DOWN)
     {
-        key == 112 ? e->max_iter += 42 : (e->max_iter -= 42);
+        key == UP ? e->max_iter += 42 : (e->max_iter -= 42);
         do_fractol(e);
     }
     return (0);
